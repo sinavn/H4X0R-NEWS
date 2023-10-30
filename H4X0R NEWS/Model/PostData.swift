@@ -18,6 +18,7 @@ struct Post:Decodable, Identifiable{
     let url : String?
     let points : Int
     let num_comments : Int
+    let created_at :String
 }
 struct CommentResults:Decodable{
     let hits : [Comments]

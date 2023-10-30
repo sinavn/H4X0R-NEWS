@@ -8,36 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var networkManager = NetworkManager()
+    @EnvironmentObject var networkManager :NetworkManager
     
     var body: some View {
+                        ScrollView{
+                            ForEach(networkManager.posts) { post in
+                                
+                                ListRowView(url: post.url, title: post.title, objectId: post.id, commnetsCount: post.num_comments ,createdAt: post.created_at)
+
         
-        NavigationStack{
-                List(networkManager.posts) { post in
-                
-                        NavigationLink(destination: DetailView(url: post.url)) {
-                                Text(post.title)
-                                Spacer()
-     }
-//                        .frame(width: 200, height: 50.0, alignment: .leading)
-//
-                    NavigationLink(destination: CommentsView(objectID:post.objectID)) {
-                            HStack{
-                                Image(systemName:"bubble.left.fill")
-                                Text("\(post.num_comments)")
                             }
                         }
+        
+                .navigationTitle("hacker")
+                .onAppear {
+                    networkManager.fetchData()
                 }
-            .navigationTitle("H4X0R NEWS")
-        }
-        .onAppear {
-            networkManager.fetchData()
-        }
+                .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(hue: 0.643, saturation: 0.087, brightness: 0.998)/*@END_MENU_TOKEN@*/)
+      
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            NavigationView{
+                ContentView()
+            }
+            .environmentObject(NetworkManager())
+            
+            
+        }
     }
 }

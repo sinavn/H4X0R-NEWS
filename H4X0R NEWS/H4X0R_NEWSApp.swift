@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct H4X0R_NEWSApp: App {
+    
+    @StateObject var networkManager : NetworkManager = NetworkManager()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                ContentView()
+            }
+            .environmentObject(networkManager)
+
         }
     }
 }
