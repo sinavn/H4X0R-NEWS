@@ -14,6 +14,9 @@ struct CommentsView: View {
         
         List(networkManager.commentPost){post in
             Text(post.comment_text)
+                .background(Color(.systemGray6))
+                .cornerRadius(10)
+                .padding(.bottom,5)
             
         }
         .onAppear(){

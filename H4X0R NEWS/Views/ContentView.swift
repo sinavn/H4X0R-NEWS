@@ -15,18 +15,20 @@ struct ContentView: View {
                             ForEach(networkManager.posts) { post in
                                 
                                 ListRowView(url: post.url, title: post.title, objectId: post.id, commnetsCount: post.num_comments ,createdAt: post.created_at)
-
-        
                             }
                         }
+                        
         
-                .navigationTitle("hacker")
+                .navigationTitle(
+                    Text("H4X0R NEWS")
+                )
                 .onAppear {
                     networkManager.fetchData()
                 }
-                .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(hue: 0.643, saturation: 0.087, brightness: 0.998)/*@END_MENU_TOKEN@*/)
+                .background(Color.accentColor)
       
     }
+        
     
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {

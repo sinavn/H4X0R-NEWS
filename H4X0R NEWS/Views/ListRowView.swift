@@ -27,13 +27,13 @@ struct ListRowView: View {
                 
                 NavigationLink(destination: DetailView(url: url)) {
                     Text(title)
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color.primary)
                         .multilineTextAlignment(.leading)
 
                 }
                 .frame(maxWidth: .infinity ,alignment: .leading)
                 .frame(height: 50)
-                .background(Color(.white))
+//                .background(Color(.white))
                 .cornerRadius(10)
 //                .shadow(radius: 4)
                 .padding(.bottom,5)
@@ -46,9 +46,12 @@ struct ListRowView: View {
                             Image(systemName:"bubble.left.fill")
                             Text("\(commnetsCount)")
                         }
+                        .foregroundColor(.orange)
+                        .fontWeight(.bold)
+
                     }
-                .frame(width: 70,height:50 )
-                .background(Color(.white))
+                .frame(width: 70,height:50)
+//                .background(Color(.white))
                 .cornerRadius(10)
                 .padding(.bottom,5)
     //            .shadow(radius: 5)
@@ -62,8 +65,9 @@ struct ListRowView: View {
             
         }
         
-        .cornerRadius(20)
-    
+        
+        .background(Color(.systemGray6))
+        .cornerRadius(10)
     }
 }
 
